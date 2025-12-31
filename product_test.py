@@ -1,4 +1,4 @@
-from app import *
+from product import *
 
 def test_discount():
     price = 100
