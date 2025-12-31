@@ -1,24 +1,29 @@
 import sys
 
-if len(sys.argv) != 4:
-    print("Usage: python app.py <price> <discount> <quantity>")
-    sys.exit(1)
+def calculate_discount(price, discount, quantity):
+    total_price = price * quantity
+    discount_amount = total_price * discount / 100
+    final_price = total_price - discount_amount
+    return final_price
 
-price = float(sys.argv[1])
-discount = float(sys.argv[2])
-quantity = int(sys.argv[3])
+if __name__ == "__main__":   # <-- Add this line
+    if len(sys.argv) != 4:
+        print("Usage: python app.py <price> <discount> <quantity>")
+        sys.exit(1)
 
-total_price = price * quantity
-discount_amount = total_price * discount / 100
-final_price = total_price - discount_amount
+    price = float(sys.argv[1])
+    discount = float(sys.argv[2])
+    quantity = int(sys.argv[3])
 
-print(f"Price per item: {price}")
-print(f"Quantity: {quantity}")
-print(f"Discount: {discount}%")
+    final_price = calculate_discount(price, discount, quantity)
 
-if final_price > 0:
-    print(f"Final Price: {final_price}")
-elif final_price == 0:
-    print("Final price is zero")
-else:
-    print("Invalid calculation")
+    print(f"Price per item: {price}")
+    print(f"Quantity: {quantity}")
+    print(f"Discount: {discount}%")
+
+    if final_price > 0:
+        print(f"Final Price: {final_price}")
+    elif final_price == 0:
+        print("Final price is zero")
+    else:
+        print("Invalid calculation")
